@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineB80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="80dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineB100"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="100dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineR140"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="140dp"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineL80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="80dp"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp"/>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/OngakuRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/guidelineT"
+        app:layout_constraintBottom_toTopOf="@id/guidelineB100"
+        app:layout_constraintLeft_toRightOf="@id/guidelineL"
+        app:layout_constraintRight_toLeftOf="@id/guidelineR"
+        android:background="#fcfaf2">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <SeekBar
+        android:id="@+id/MainSeekBar"
+        style="@android:style/Widget.Material.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toTopOf="@id/guidelineB80"
+        android:background="#fcfaf2"/>
+
+    <ImageView
+        android:id="@+id/MainAlbumCover"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineB80"
+        android:src="@drawable/memories_with_umi"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@id/guidelineB80"
+        app:layout_constraintLeft_toRightOf="@id/guidelineL80"
+        app:layout_constraintRight_toLeftOf="@id/guidelineR140"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#2f6bcd">
+        <TextView
+            android:id="@+id/MainTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Music S.T.A.R.T!! (UMI Mix)"
+            android:textSize="20sp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textIsSelectable="true"
+            android:textColor="#fcfaf2"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/MainArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="三森すずこ"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textIsSelectable="true"
+            android:textColor="#fcfaf2"
+            android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="80dp"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineB80"
+        app:layout_constraintLeft_toRightOf="@+id/guidelineR140"
+        android:gravity="center"
+        android:background="#2f6bcd">
+
+        <Button
+            android:id="@+id/MainButtonPrevious"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:text="⏮"
+            android:textSize="20sp"
+            android:textColor="#fcfaf2"/>
+
+        <Button
+            android:id="@+id/MainButtonPlay"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="⏯"
+            android:textSize="30sp"
+            android:textColor="#fcfaf2"/>
+
+        <Button
+            android:id="@+id/MainButtonNext"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:text="⏭"
+            android:textSize="20sp"
+            android:textColor="#fcfaf2"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

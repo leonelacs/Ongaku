@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity"
+    android:background="#2f6bcd">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="0dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineB80"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="80dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineB75"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="75dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="0dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="0dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineL50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="50dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guidelineR50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="50dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.leonelacs.ongaku.SquareRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <ImageView
+                android:id="@+id/DetailAlbumCover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/memories_with_umi"/>
+        </com.leonelacs.ongaku.SquareRelativeLayout>
+
+        <TextView
+            android:id="@+id/DetailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textIsSelectable="true"
+            android:text="Music S.T.A.R.T!! (UMI Mix)"
+            android:textSize="25sp"
+            android:textColor="#fcfaf2"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/DetailArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textIsSelectable="true"
+            android:text="三森すずこ"
+            android:textSize="18sp"
+            android:textColor="#fcfaf2"/>
+        <TextView
+            android:id="@+id/DetailAlbumName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textIsSelectable="true"
+            android:text="ラブライブ！Solo Live! collection Memories with Umi 園田海未"
+            android:textSize="18sp"
+            android:textColor="#fcfaf2"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/guidelineB80">
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/DetailCurrent"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:text="00:00"
+        app:layout_constraintBottom_toTopOf="@id/guidelineB80"
+        app:layout_constraintLeft_toRightOf="@id/guidelineL"
+        android:layout_marginLeft="5dp"
+        android:textColor="#fcfaf2"/>
+
+    <SeekBar
+        android:id="@+id/DetailSeekBar"
+        style="@android:style/Widget.Material.SeekBar"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toTopOf="@id/guidelineB80"
+        app:layout_constraintLeft_toRightOf="@id/guidelineL50"
+        app:layout_constraintRight_toLeftOf="@id/guidelineR50"/>
+
+    <TextView
+        android:id="@+id/DetailFull"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:text="04:55"
+        android:gravity="end"
+        app:layout_constraintBottom_toTopOf="@id/guidelineB80"
+        app:layout_constraintRight_toLeftOf="@id/guidelineR"
+        android:layout_marginRight="5dp"
+        android:textColor="#fcfaf2"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/guidelineB">
+
+        <Button
+            android:id="@+id/DetailButtonShaffuru"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:text="SEQ"
+            android:textSize="18sp"
+            android:textColor="#fcfaf2"
+            android:layout_marginTop="2dp"/>
+
+        <Button
+            android:id="@+id/DetailButtonPrevious"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="⏮"
+            android:textSize="30sp"
+            android:textColor="#fcfaf2"/>
+
+        <Button
+            android:id="@+id/DetailButtonPlay"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:text="⏯"
+            android:textSize="40sp"
+            android:textColor="#fcfaf2"/>
+
+        <Button
+            android:id="@+id/DetailButtonNext"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="⏭"
+            android:textSize="30sp"
+            android:textColor="#fcfaf2"/>
+
+        <Button
+            android:id="@+id/DetailButtonRipiito"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="60dp"
+            android:layout_height="80dp"
+            android:text="ALL"
+            android:textSize="18sp"
+            android:textColor="#fcfaf2"
+            android:layout_marginTop="2dp"/>
+        <!--▶ ⏸ ⏮ ⏭ 🔀 🔁 🔂 🔄-->
+    </LinearLayout>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

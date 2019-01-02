@@ -3,11 +3,22 @@ package com.leonelacs.ongaku;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.renderscript.Allocation;
+import android.renderscript.Element;
+import android.renderscript.RenderScript;
+import android.renderscript.ScriptIntrinsicBlur;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -40,6 +51,9 @@ public class DetailActivity extends AppCompatActivity {
     int cIndex = 0;
     ShaffuruMode shuffle = ShaffuruMode.ORDER;
     RipiitoMode repeat = RipiitoMode.ALL_LOOP;
+
+    Bitmap back;
+
 
 
 
@@ -91,10 +105,16 @@ public class DetailActivity extends AppCompatActivity {
 
         if (ongakuApp.globalOngakus.get(cPosition).getCover() != null) {
             detailAlbumCover.setImageBitmap(ongakuApp.globalOngakus.get(cPosition).getCover());
+            back = Bitmap.createBitmap(ongakuApp.globalOngakus.get(cPosition).getCover());
+            back = blur3Times(back);
+            findViewById(R.id.DetailBackground).setBackground(new BitmapDrawable(getResources(), back));
         }
         else {
             detailAlbumCover.setImageResource(R.drawable.default_cover_alpha);
+            back = BitmapFactory.decodeResource(getResources(),R.drawable.default_cover_alpha_400);
+            findViewById(R.id.DetailBackground).setBackground(getDrawable(R.drawable.default_cover));
         }
+
         detailTitle.setText(ongakuApp.globalOngakus.get(cPosition).getTitle());
         detailArtist.setText(ongakuApp.globalOngakus.get(cPosition).getArtist());
         detailAlbumName.setText(ongakuApp.globalOngakus.get(cPosition).getAlbum());
@@ -187,9 +207,13 @@ public class DetailActivity extends AppCompatActivity {
         detailAlbumName.setText(ongakuApp.globalOngakus.get(index).getAlbum());
         if (ongakuApp.globalOngakus.get(index).getCover() == null) {
             detailAlbumCover.setImageResource(R.drawable.default_cover_alpha);
+            findViewById(R.id.DetailBackground).setBackground(getDrawable(R.drawable.default_cover));
         }
         else {
             detailAlbumCover.setImageBitmap(ongakuApp.globalOngakus.get(index).getCover());
+            back = ongakuApp.globalOngakus.get(index).getCover();
+            back = blur3Times(back);
+            findViewById(R.id.DetailBackground).setBackground(new BitmapDrawable(getResources(), back));
         }
         detailSeekBar.setMax(housouBinder.getHousouDuration());
         detailFull.setText(toTimeFormat(housouBinder.getHousouDuration()));
@@ -246,5 +270,27 @@ public class DetailActivity extends AppCompatActivity {
         str_full_min = str_full_min + String.valueOf(full_min);
         str_full_sec = str_full_sec + String.valueOf(full_sec);
         return str_full_min + ":" + str_full_sec;
+    }
+
+    Bitmap blurBitmap(Bitmap bmp) {
+        Bitmap bitmap = Bitmap.createBitmap(bmp);
+        Bitmap blurred = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        RenderScript rs = RenderScript.create(this);
+        ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
+        Allocation in = Allocation.createFromBitmap(rs, bitmap);
+        Allocation out = Allocation.createFromBitmap(rs, blurred);
+        blur.setRadius(25f);
+        blur.setInput(in);
+        blur.forEach(out);
+        out.copyTo(blurred);
+        rs.destroy();
+        return blurred;
+    }
+
+    Bitmap blur3Times(Bitmap bmp) {
+        Bitmap blurred = blurBitmap(bmp);
+        blurred = blurBitmap(blurred);
+        blurred = blurBitmap(blurred);
+        return blurred;
     }
 }
